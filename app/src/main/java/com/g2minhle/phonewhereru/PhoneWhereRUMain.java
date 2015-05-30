@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import android.view.View;
+import android.widget.TextView;
 
 public class PhoneWhereRUMain extends ActionBarActivity {
 
@@ -14,6 +16,11 @@ public class PhoneWhereRUMain extends ActionBarActivity {
         setContentView(R.layout.activity_phone_where_ru_main);
     }
 
+    public void installTitle(View view){
+        TextView txt_Status = (TextView) findViewById(R.id.txt_Status);
+        TitleInstaller titleInstaller= new TitleInstaller(this, txt_Status);
+        titleInstaller.execute();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -36,4 +43,5 @@ public class PhoneWhereRUMain extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }

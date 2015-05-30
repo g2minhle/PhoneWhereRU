@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.g2minhle.phonewhereru" >
 
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+
+    <uses-permission android:name="com.microsoft.band.service.access.BIND_BAND_SERVICE" />
+
+    <uses-permission android:name="android.permission.VIBRATE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,6 +22,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver
+            android:name=".TileEventReceiver"
+            android:label="@string/app_name"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action
+                    android:name="com.microsoft.band.action.ACTION_TILE_OPENED" />
+                <action
+                    android:name="com.microsoft.band.action.ACTION_TILE_BUTTON_PRESSED" />
+                <action
+                    android:name="com.microsoft.band.action.ACTION_TILE_CLOSED" />
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>
